@@ -1,14 +1,13 @@
 import React from "react";
 import DisplayScreen from "../components/DisplayScreen";
-import KeyPad from "../components/KeyPad";
+import Calculator from "../components/Calculator";
 
-function HomePage(props) {
+function CalculatorMain(props) {
   return (
     <div className="calculator_main">
-      <DisplayScreen />
-      <KeyPad />
+      <Calculator />
     </div>
   );
 }
 
-export default HomePage;
+export default CalculatorMain;

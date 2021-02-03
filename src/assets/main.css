@@ -4,3 +4,56 @@ body{
 #root{
   height: 100vh;
 }
+.main_layer {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calculator_main {
+border: 1px solid #ccc;
+    background: #000;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 320px;
+}
+.display {
+    display: flex;
+    justify-content: flex-end;
+    background: #ccc;
+    border-radius: 0.5rem;
+    margin: 2rem 1%;
+    padding: 0px 10px;
+}
+.display p {
+    color: #fff;
+    text-align: right;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.calc_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.calc_buttons button {
+    padding: 0.7rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: #fff;
+    width: 70px;
+    border-radius: 50%;
+    height: 70px;
+    margin-bottom: 0.5rem;  
+    cursor: pointer;
+    color: #968e8e;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+.calc_buttons button:focus, .calc_buttons button:hover, .calc_buttons button:active{
+  outline: none;
+  /* border-style: none; */
+  appearance:initial
+}

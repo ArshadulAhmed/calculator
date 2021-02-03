@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { evaluate } from "mathjs";
 import { Button } from "../common/Button";
 import { buttonValueDigits, buttonValueOperands } from "../utils/buttonValues";
+import DisplayScreen from "./DisplayScreen";
 
-function KeyPad(props) {
+const maxPrecision = 16;
+
+function Calculator(props) {
   const [displayValue, setDisplayValue] = useState("0");
   const [isOperatorOn, setIsOperatorOn] = useState(false);
   const [clearAll, setClearAll] = useState(true);
@@ -21,7 +24,6 @@ function KeyPad(props) {
       setClearAll(false);
     }
   };
-
   const processOperator = (value) => {
     let newValueToDisplay = null;
     let newOperator = null;
@@ -48,7 +50,54 @@ function KeyPad(props) {
       setClearAll(false);
     }
   };
-
+  const clearAllValues = () => {
+    if (clearAll) {
+      setDisplayValue("0");
+      setFirstOperand("0");
+      setIsOperatorOn(null);
+      setIsOperatorOn(false);
+      setClearAll(true);
+    }
+  };
+  const processDot = (value) => {
+    const isPoint = displayValue.indexOf(".") === -1 ? true : false;
+    //   let newValueToDisplayOnPoint = null;
+    if (isOperatorOn) {
+      setDisplayValue("0.");
+      setIsOperatorOn(false);
+      setClearAll(false);
+    } else {
+      if (isPoint) {
+        //newValueToDisplayOnPoint = `${displayValue}${value}`;
+        setDisplayValue(`${displayValue}${value}`);
+      }
+    }
+  };
+  const processPlusMinus = () => {
+    const newDisplayToBeValue =
+      parseFloat(displayValue).toPrecision(maxPrecision) * 1;
+    setDisplayValue(newDisplayToBeValue);
+    setIsOperatorOn(false);
+    setClearAll(false);
+  };
+  const processUnknownValue = () => {
+    console.log("Unexpected input");
+  };
+  const processFunctionKey = (value) => {
+    switch (value) {
+      case "C":
+        clearAllValues();
+        break;
+      case "±":
+        processPlusMinus();
+        break;
+      case ".":
+        processDot();
+        break;
+      default:
+        processUnknownValue();
+    }
+  };
   const handleClick = (value) => {
     processUserEnteredValue(value);
   };
@@ -58,9 +107,9 @@ function KeyPad(props) {
     if (isDigitEntered) {
       processDigit(value);
     } else if (isOperandEntered) {
-      processOperator();
+      processOperator(value);
     } else {
-      //processFunctionKey()
+      processFunctionKey(value);
     }
   };
 
@@ -69,26 +118,29 @@ function KeyPad(props) {
   console.log("firstOperand", firstOperand);
 
   return (
-    <div>
-      {buttonValueDigits.map((item, index) => (
-        <Button
-          key={index}
-          onClick={() => handleClick(item)}
-          label={item}
-          className="kepadButton"
-        />
-      ))}
+    <div className="calc_main">
+      <DisplayScreen value={displayValue} />
+      <div className="calc_buttons">
+        {buttonValueDigits.map((item, index) => (
+          <Button
+            key={index}
+            onClick={() => handleClick(item)}
+            label={item}
+            className="kepadButton"
+          />
+        ))}
 
-      {buttonValueOperands.map((item, index) => (
-        <Button
-          key={index}
-          onClick={() => handleClick(item)}
-          label={item}
-          className="kepadButton"
-        />
-      ))}
+        {buttonValueOperands.map((item, index) => (
+          <Button
+            key={index}
+            onClick={() => handleClick(item)}
+            label={item}
+            className="kepadButton"
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
-export default KeyPad;
+export default Calculator;
