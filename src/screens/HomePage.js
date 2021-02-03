@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import DisplayScreen from "../components/DisplayScreen";
+import KeyPad from "../components/KeyPad";
 
 function HomePage(props) {
   return (
-    <React.Fragment>
-      <div justify="center">
-        <h1>Calculator</h1>
-      </div>
-    </React.Fragment>
+    <div className="calculator_main">
+      <DisplayScreen />
+      <KeyPad />
+    </div>
   );
 }
 
