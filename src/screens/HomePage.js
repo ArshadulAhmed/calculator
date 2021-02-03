@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import DisplayScreen from "../components/DisplayScreen";
 import KeyPad from "../components/KeyPad";
 
@@ -12,9 +11,4 @@ function HomePage(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-const mapDispatchToProps = {};
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;

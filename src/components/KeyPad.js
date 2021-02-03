@@ -1,14 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Button } from "../common/Button";
-import {
-  digitHanndle,
-  handlePlus,
-  handleMinus,
-  handleMultipication,
-  handleDivision,
-  handleEquel,
-} from "../redux/actions/operationHandle";
 
 const buttonValues = [
   "0",
@@ -30,25 +21,26 @@ const buttonValues = [
 
 function KeyPad(props) {
   const handleClick = (value) => {
-    switch (value) {
-      case "+":
-        props.handlePlus(value);
-        break;
-      case "-":
-        props.handleMinus(value);
-        break;
-      case "*":
-        props.handleMultipication(value);
-        break;
-      case "/":
-        props.handleDivision(value);
-        break;
-      case "=":
-        props.handleEquel(value);
-        break;
-      default:
-        props.digitHanndle(value);
-    }
+    // switch (value) {
+    //   case "+":
+    //     props.handlePlus(value);
+    //     break;
+    //   case "-":
+    //     props.handleMinus(value);
+    //     break;
+    //   case "*":
+    //     props.handleMultipication(value);
+    //     break;
+    //   case "/":
+    //     props.handleDivision(value);
+    //     break;
+    //   case "=":
+    //     props.handleEquel(value);
+    //     break;
+    //   default:
+    //     props.digitHanndle(parseInt(value));
+    // }
+    console.log(value);
   };
 
   return (
@@ -65,16 +57,4 @@ function KeyPad(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-const mapDispatchToProps = {
-  digitHanndle,
-  handlePlus,
-  handleMinus,
-  handleMultipication,
-  handleDivision,
-  handleEquel,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(KeyPad);
+export default KeyPad;
