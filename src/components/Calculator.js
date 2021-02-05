@@ -13,8 +13,6 @@ function Calculator(props) {
   const [firstOperand, setFirstOperand] = useState("0");
   const [operatorInitated, setOperatorInitated] = useState(null);
 
-  console.log("currentTheme", props);
-
   const processDigit = (value) => {
     if (isOperatorOn) {
       setDisplayValue(value);
@@ -114,10 +112,6 @@ function Calculator(props) {
       processFunctionKey(value);
     }
   };
-
-  console.log("displayValue", displayValue);
-  console.log("isOperatorOn", isOperatorOn);
-  console.log("firstOperand", firstOperand);
 
   return (
     <div className="calc_main">
