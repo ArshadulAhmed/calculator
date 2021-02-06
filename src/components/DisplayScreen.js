@@ -1,10 +1,10 @@
 import React from "react";
 import { evaluate } from "mathjs";
 
-const maxCharsAtFullSize = 6;
+const maxChar = 6;
 const scaleFactor = "scale(0.36)";
 
-const maxPrecision = 16;
+const maxdigitafterPoint = 16;
 
 function DisplayScreen(props) {
   const valueRecived = props.value;
@@ -17,7 +17,7 @@ function DisplayScreen(props) {
     pointAt === -1 ? 0 : evaluate(decimalValue.length - 1);
 
   let formattedValue = null;
-  let scientificNotation = null;
+  let scientificNotationIs = null;
   let scaleDown = null;
 
   formattedValue = parseFloat(valueRecived).toLocaleString(undefined, {
@@ -27,32 +27,31 @@ function DisplayScreen(props) {
   if (formattedValue === "NaN") {
     formattedValue = "Error";
   } else {
-    if (formattedValue.length > maxPrecision - 1) {
-      scientificNotation = parseFloat(valueRecived).toExponential(
-        maxPrecision - 4
+    if (formattedValue.length > maxdigitafterPoint - 1) {
+      scientificNotationIs = parseFloat(valueRecived).toExponential(
+        maxdigitafterPoint - 4
       );
       if (
-        scientificNotation.substring(
-          scientificNotation.length - 3,
-          scientificNotation.length
+        scientificNotationIs.substring(
+          scientificNotationIs.length - 3,
+          scientificNotationIs.length
         ) === "e+0"
       ) {
-        scientificNotation = parseFloat(valueRecived).toExponential(
-          maxPrecision - 1
+        scientificNotationIs = parseFloat(valueRecived).toExponential(
+          maxdigitafterPoint - 1
         );
-        scientificNotation = scientificNotation.substring(
+        scientificNotationIs = scientificNotationIs.substring(
           0,
-          scientificNotation.length - 3
+          scientificNotationIs.length - 3
         );
       }
-      formattedValue = scientificNotation;
+      formattedValue = scientificNotationIs;
       if (formattedValue === "NaN") {
         formattedValue = "Overflow\xA0Error";
       }
     }
   }
-  scaleDown =
-    `${formattedValue}`.length > maxCharsAtFullSize ? scaleFactor : "scale(1)";
+  scaleDown = `${formattedValue}`.length > maxChar ? scaleFactor : "scale(1)";
 
   return (
     <div className="display">

@@ -9,7 +9,6 @@ export const buttonValueDigits = [
   "7",
   "8",
   "9",
-  ".",
 ];
 
-export const buttonValueOperands = ["+", "-", "*", "/", "="];
+export const buttonValueOperands = ["/", "*", "-", "+", "="];

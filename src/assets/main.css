@@ -1,137 +1,166 @@
 /* // default theme(light) */
 
 html {
-    --primaryBackground: #ffffff;
-    --primaryTextColor: #000000;
-    --calculatorBackgroundButtonColor: #f0f0f0;
+  --primaryBackground: #ffffff;
+  --primaryTextColor: #000000;
+  --calculatorBackgroundButtonColor: #f0f0f0;
 }
 
 /* // dark theme */
 
 html[data-theme="dark"] {
-    --primaryBackground: #000000;
-    --primaryTextColor: #ffffff;
-    --calculatorBackgroundButtonColor: #666;
+  --primaryBackground: #000000;
+  --primaryTextColor: #ffffff;
+  --calculatorBackgroundButtonColor: #666;
 }
-
-
-body{
-  font-family: 'Montserrat', sans-serif;
+* {
+  font-family: "Montserrat", sans-serif !important;
+}
+body {
   background-color: var(--primaryBackground);
+  margin: 0px;
 }
-#root{
+#root {
   height: 100vh;
 }
 .main_layer {
-    height: inherit;
+  height: inherit;
 }
 .calculator_main {
-    height: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .display {
-    display: flex;
-    justify-content: flex-end;
-    background: var(--calculatorBackgroundButtonColor);
-    border-radius: 0.5rem;
-    margin: 2rem 1%;
-    padding: 0px 10px;
+  display: flex;
+  justify-content: flex-end;
+  background: var(--calculatorBackgroundButtonColor);
+  border-radius: 0.5rem;
+  margin: 2rem 1%;
+  padding: 0px 10px;
 }
 .display p {
-    color: var(--primaryTextColor);
-    text-align: right;
-    font-size: 1rem;
-    font-weight: bold;
+  color: var(--primaryTextColor);
+  text-align: right;
+  font-size: 1rem;
+  font-weight: bold;
 }
 .calc_buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .calc_buttons button {
-    padding: 0.7rem;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background: var(--calculatorBackgroundButtonColor);
-    width: 70px;
-    border-radius: 50%;
-    height: 70px;
-    margin-bottom: 0.5rem;  
-    cursor: pointer;
-    color: var(--primaryTextColor);
-    font-family: 'Montserrat', sans-serif;
-    border: none;
-    
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: var(--calculatorBackgroundButtonColor);
+  width: 60px;
+  border-radius: 50%;
+  height: 60px;
+  margin: 0.1rem;
+  cursor: pointer;
+  color: var(--primaryTextColor);
+  font-family: "Montserrat", sans-serif;
+  border: none;
 }
-.calc_buttons button:focus, .calc_buttons button:hover, .calc_buttons button:active, .control_theme button:active, .control_theme button:focus{
+.calc_buttons button:focus,
+.calc_buttons button:hover,
+.calc_buttons button:active,
+.control_theme button:active,
+.control_theme button:focus {
   outline: none;
   /* border-style: none; */
-  appearance:initial
+  appearance: initial;
 }
 .control_theme {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
 }
 
 .control_theme button {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    margin: 0px 5px;
-    border-radius: 0.8rem;
-    border: 1px solid var(--calculatorBackgroundButtonColor);
-    background-color: var(--primaryBackground);
-    color: var(--primaryTextColor);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin: 0px 5px;
+  border-radius: 0.8rem;
+  border: 1px solid var(--calculatorBackgroundButtonColor);
+  background-color: var(--primaryBackground);
+  color: var(--primaryTextColor);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 .calc_main {
-    width: 320px;
-    background: var(--primaryBackground);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--calculatorBackgroundButtonColor);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  width: 300px;
+  background: var(--primaryBackground);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--calculatorBackgroundButtonColor);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  text-align: center;
 }
-.theme_button{
-    cursor: pointer;
+.theme_button {
+  cursor: pointer;
 }
 
-
-@media(min-width:0px) and (max-width:320px){
-    .main_layer{
-        margin: 0px 10px;
-        height: auto;
-    }
-    .calc_main {
-        width: 100%;
-        
-    }
+button.show_scientific {
+  padding: 5px 10px;
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin: 0px 5px 15px;
+  border-radius: 0.8rem;
+  border: 3px solid var(--calculatorBackgroundButtonColor);
+  background-color: var(--primaryBackground);
+  color: var(--primaryTextColor);
+  cursor: pointer;
 }
-@media(min-width:321px) and (max-width:480px){
-    .main_layer{
-        margin: 0px 10px;
-        height: auto;
-    }
-    .calc_main {
-        width: 90%;
-        
-    }
+.operators {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-@media(min-width:480px) and (max-width:767px){
-    .main_layer{
-        margin: 0px 10px;
-        height: auto;
-    }
-    .calc_main {
-        width: 70%;
-        
-    }
+.operators button {
+  width: 47px;
+  height: 47px;
+}
+button.show_scientific:focus {
+  outline: none;
+}
+.innerCalc {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 0px) and (max-width: 320px) {
+  .main_layer {
+    margin: 0px 10px;
+    height: auto;
+  }
+  .calc_main {
+    width: 100%;
+  }
+}
+@media (min-width: 321px) and (max-width: 480px) {
+  .main_layer {
+    margin: 0px 10px;
+    height: auto;
+  }
+  .calc_main {
+    width: 90%;
+  }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  .main_layer {
+    margin: 0px 10px;
+    height: auto;
+  }
+  .calc_main {
+    width: 70%;
+  }
 }
